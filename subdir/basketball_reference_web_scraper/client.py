@@ -1,15 +1,15 @@
 import requests
 
-from basketball_reference_web_scraper.errors import InvalidSeason, InvalidDate, InvalidPlayerAndSeason
-from basketball_reference_web_scraper.http_service import HTTPService
-from basketball_reference_web_scraper.output.columns import BOX_SCORE_COLUMN_NAMES, SCHEDULE_COLUMN_NAMES, \
+from .errors import InvalidSeason, InvalidDate, InvalidPlayerAndSeason
+from .http_service import HTTPService
+from .output.columns import BOX_SCORE_COLUMN_NAMES, SCHEDULE_COLUMN_NAMES, \
     PLAYER_SEASON_TOTALS_COLUMN_NAMES, \
     PLAYER_ADVANCED_SEASON_TOTALS_COLUMN_NAMES, TEAM_BOX_SCORES_COLUMN_NAMES, PLAY_BY_PLAY_COLUMN_NAMES, \
     PLAYER_SEASON_BOX_SCORE_COLUMN_NAMES, SEARCH_RESULTS_COLUMN_NAMES
-from basketball_reference_web_scraper.output.fields import format_value, BasketballReferenceJSONEncoder
-from basketball_reference_web_scraper.output.service import OutputService
-from basketball_reference_web_scraper.output.writers import CSVWriter, JSONWriter, FileOptions, OutputOptions, SearchCSVWriter
-from basketball_reference_web_scraper.parser_service import ParserService
+from .output.fields import format_value, BasketballReferenceJSONEncoder
+from .output.service import OutputService
+from .output.writers import CSVWriter, JSONWriter, FileOptions, OutputOptions, SearchCSVWriter
+from .parser_service import ParserService
 
 
 def player_box_scores(day, month, year, output_type=None, output_file_path=None, output_write_option=None,

@@ -1,4 +1,4 @@
-from basketball_reference_web_scraper.data import OutputType
+from ..data import OutputType
 
 
 class OutputService:
