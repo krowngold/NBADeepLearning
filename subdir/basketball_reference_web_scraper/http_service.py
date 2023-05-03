@@ -1,9 +1,10 @@
 import requests
+from bs4 import BeautifulSoup
 from lxml import html
-
+import time
 from .data import TEAM_TO_TEAM_ABBREVIATION, TeamTotal, PlayerData
 from .errors import InvalidDate, InvalidPlayerAndSeason
-from .html import DailyLeadersPage, PlayerSeasonBoxScoresPage, PlayerSeasonTotalTable, \
+from .html import DailyLeadersPage, TeamYearTotalsPage, PlayerSeasonBoxScoresPage, PlayerSeasonTotalTable, \
     PlayerAdvancedSeasonTotalsTable, PlayByPlayPage, SchedulePage, BoxScoresPage, DailyBoxScoresPage, SearchPage, \
     PlayerPage
 
@@ -179,6 +180,26 @@ class HTTPService:
             for game_url_path in page.game_url_paths
             for box_score in self.team_box_score(game_url_path=game_url_path)
         ]
+    
+    def team_season_stats(self, team, year):
+        url = "{BASE_URL}/teams/{team}/{year}.html".format(
+            BASE_URL=HTTPService.BASE_URL,
+            team=team,
+            year=year)
+
+        response = requests.get(url=url)
+
+        response.raise_for_status()
+
+        tableIndex = response.text.find('<table class="sortable stats_table" id="team_and_opponent"')
+        endIndex = response.text[tableIndex:].find('</table>')
+        tableStr = response.text[tableIndex:tableIndex + endIndex + 8]
+
+        print(html.fromstring(tableStr))
+        
+        page = TeamYearTotalsPage(html=html.fromstring(tableStr))
+
+        return page.totals_table
 
     def search(self, term):
         response = requests.get(

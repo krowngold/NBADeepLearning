@@ -1128,3 +1128,837 @@ class PlayerPage:
             return PlayerPageTotalsTable(html=totals_tables[0])
 
         return None
+    
+class TeamYearTotalsPageRow:
+    def __init__(self, html):
+        self.html = html
+
+    @property
+    def field_goals(self):
+        cells = self.html.xpath('td[@data-stat="fg"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def field_goals_attempted(self):
+        cells = self.html.xpath('td[@data-stat="fga"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="fg_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="fg3"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goals_attempted(self):
+        cells = self.html.xpath('td[@data-stat="fg3a"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="fg3_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="fg2"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="fg2a"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="fg2_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throws(self):
+        cells = self.html.xpath('td[@data-stat="ft"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throws_attempted(self):
+        cells = self.html.xpath('td[@data-stat="fta"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throw_percentage(self):
+        cells = self.html.xpath('td[@data-stat="ft_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def offensive_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="orb"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def defensive_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="drb"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def total_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="trb"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def assists(self):
+        cells = self.html.xpath('td[@data-stat="ast"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def steals(self):
+        cells = self.html.xpath('td[@data-stat="stl"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def blocks(self):
+        cells = self.html.xpath('td[@data-stat="blk"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def turnovers(self):
+        cells = self.html.xpath('td[@data-stat="tov"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+
+    @property
+    def personal_fouls(self):
+        cells = self.html.xpath('td[@data-stat="pf"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def points(self):
+        cells = self.html.xpath('td[@data-stat="pts"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+
+    def __eq__(self, other):
+        if isinstance(other, TeamYearTotalsPageRow):
+            return self.html == other.html
+        return False
+    
+class OppTeamYearTotalsPageRow:
+    def __init__(self, html):
+        self.html = html
+
+    @property
+    def field_goals(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def field_goals_attempted(self):
+        cells = self.html.xpath('td[@data-stat="opp_fga"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg3"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goals_attempted(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg3a"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg3_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg2"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg2a"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg2_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throws(self):
+        cells = self.html.xpath('td[@data-stat="opp_ft"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throws_attempted(self):
+        cells = self.html.xpath('td[@data-stat="opp_fta"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throw_percentage(self):
+        cells = self.html.xpath('td[@data-stat="opp_ft_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def offensive_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="opp_orb"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def defensive_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="opp_drb"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def total_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="opp_trb"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def assists(self):
+        cells = self.html.xpath('td[@data-stat="opp_ast"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def steals(self):
+        cells = self.html.xpath('td[@data-stat="opp_stl"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def blocks(self):
+        cells = self.html.xpath('td[@data-stat="opp_blk"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def turnovers(self):
+        cells = self.html.xpath('td[@data-stat="opp_tov"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+
+    @property
+    def personal_fouls(self):
+        cells = self.html.xpath('td[@data-stat="opp_pf"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def points(self):
+        cells = self.html.xpath('td[@data-stat="opp_pts"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+
+    def __eq__(self, other):
+        if isinstance(other, OppTeamYearTotalsPageRow):
+            return self.html == other.html
+        return False
+    
+class TeamYearTotalsPerGamePageRow:
+    def __init__(self, html):
+        self.html = html
+
+    @property
+    def field_goals(self):
+        cells = self.html.xpath('td[@data-stat="fg_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def field_goals_attempted(self):
+        cells = self.html.xpath('td[@data-stat="fga_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="fg_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="fg3_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goals_attempted(self):
+        cells = self.html.xpath('td[@data-stat="fg3a_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="fg3_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="fg2_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="fg2a_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="fg2_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throws(self):
+        cells = self.html.xpath('td[@data-stat="ft_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throws_attempted(self):
+        cells = self.html.xpath('td[@data-stat="fta_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throw_percentage(self):
+        cells = self.html.xpath('td[@data-stat="ft_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def offensive_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="orb_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def defensive_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="drb_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def total_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="trb_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def assists(self):
+        cells = self.html.xpath('td[@data-stat="ast_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def steals(self):
+        cells = self.html.xpath('td[@data-stat="stl_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def blocks(self):
+        cells = self.html.xpath('td[@data-stat="blk_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def turnovers(self):
+        cells = self.html.xpath('td[@data-stat="tov_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+
+    @property
+    def personal_fouls(self):
+        cells = self.html.xpath('td[@data-stat="pf_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def points(self):
+        cells = self.html.xpath('td[@data-stat="pts_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+
+    def __eq__(self, other):
+        if isinstance(other, TeamYearTotalsPerGamePageRow):
+            return self.html == other.html
+        return False
+    
+class OppTeamYearTotalsPerGamePageRow:
+    def __init__(self, html):
+        self.html = html
+
+    @property
+    def field_goals(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def field_goals_attempted(self):
+        cells = self.html.xpath('td[@data-stat="opp_fga_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg3_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goals_attempted(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg3a_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def three_pt_field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg3_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg2_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goals(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg2a_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def two_pt_field_goal_percentage(self):
+        cells = self.html.xpath('td[@data-stat="opp_fg2_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throws(self):
+        cells = self.html.xpath('td[@data-stat="opp_ft_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throws_attempted(self):
+        cells = self.html.xpath('td[@data-stat="opp_fta_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def free_throw_percentage(self):
+        cells = self.html.xpath('td[@data-stat="opp_ft_pct"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def offensive_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="opp_orb_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def defensive_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="opp_drb_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def total_rebounds(self):
+        cells = self.html.xpath('td[@data-stat="opp_trb_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def assists(self):
+        cells = self.html.xpath('td[@data-stat="opp_ast_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def steals(self):
+        cells = self.html.xpath('td[@data-stat="opp_stl_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def blocks(self):
+        cells = self.html.xpath('td[@data-stat="opp_blk_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def turnovers(self):
+        cells = self.html.xpath('td[@data-stat="opp_tov_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+
+    @property
+    def personal_fouls(self):
+        cells = self.html.xpath('td[@data-stat="opp_pf_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+    
+    @property
+    def points(self):
+        cells = self.html.xpath('td[@data-stat="opp_pts_per_g"]')
+
+        if len(cells) > 0:
+            return cells[0].text_content()
+        
+        return ''
+
+    def __eq__(self, other):
+        if isinstance(other, OppTeamYearTotalsPerGamePageRow):
+            return self.html == other.html
+        return False    
+    
+class TeamYearPageTotalsTable():
+    def __init__(self, html):
+        self.html = html
+    
+    @property
+    def rows_query(self):
+        # Want to get all rows associated with the team and their opponents in a season
+        return """
+            //table[@id="team_and_opponent"]
+            /tbody
+            //tr
+        """
+    
+    @property
+    def rows(self):
+        res = []
+        for row_html in self.html.xpath(self.rows_query):
+            # 4 cases: team, team per game, opponent, opponent per game.
+            # We want to know the team's year-average stats and how their
+            # their opponents fare.
+            if "opp_fg_per_g" in html.tostring(row_html).decode():
+                res.append(OppTeamYearTotalsPerGamePageRow(html=row_html))
+            elif "opp" in html.tostring(row_html).decode():
+                res.append(OppTeamYearTotalsPageRow(html=row_html))
+            elif "per_g" in html.tostring(row_html).decode():
+                res.append(TeamYearTotalsPerGamePageRow(html=row_html))
+            else:
+                res.append(TeamYearTotalsPageRow(html=row_html))
+        return res
+
+class TeamYearTotalsPage:
+    def __init__(self, html):
+        self.html = html
+    
+    @property
+    def totals_table(self):
+
+        if len(self.html) > 0:
+            return TeamYearPageTotalsTable(html=self.html[0])
+        
+        return None

@@ -3,8 +3,8 @@ import requests
 from .errors import InvalidSeason, InvalidDate, InvalidPlayerAndSeason
 from .http_service import HTTPService
 from .output.columns import BOX_SCORE_COLUMN_NAMES, SCHEDULE_COLUMN_NAMES, \
-    PLAYER_SEASON_TOTALS_COLUMN_NAMES, \
-    PLAYER_ADVANCED_SEASON_TOTALS_COLUMN_NAMES, TEAM_BOX_SCORES_COLUMN_NAMES, PLAY_BY_PLAY_COLUMN_NAMES, \
+    PLAYER_SEASON_TOTALS_COLUMN_NAMES, PLAYER_ADVANCED_SEASON_TOTALS_COLUMN_NAMES, \
+    TEAM_SEASON_COLUMN_NAMES, TEAM_BOX_SCORES_COLUMN_NAMES, PLAY_BY_PLAY_COLUMN_NAMES, \
     PLAYER_SEASON_BOX_SCORE_COLUMN_NAMES, SEARCH_RESULTS_COLUMN_NAMES
 from .output.fields import format_value, BasketballReferenceJSONEncoder
 from .output.service import OutputService
@@ -218,6 +218,27 @@ def search(term, output_type=None, output_file_path=None, output_write_option=No
         output_type=output_type,
         json_options=json_options,
         csv_options={"column_names": SEARCH_RESULTS_COLUMN_NAMES}
+    )
+    output_service = OutputService(
+        json_writer=JSONWriter(value_formatter=BasketballReferenceJSONEncoder),
+        csv_writer=SearchCSVWriter(value_formatter=format_value)
+    )
+    return output_service.output(data=values, options=options)
+
+def team_season_totals(team, year, output_type=None, output_file_path=None, output_write_option=None, json_options=None):
+    try:
+        http_service = HTTPService(parser=ParserService())
+        values = http_service.team_season_stats(team=team, year=year)
+    except requests.exceptions.HTTPError as http_error:
+        if http_error.response.status_code == requests.codes.not_found:
+            raise InvalidDate(year=year)
+        else:
+            raise http_error
+    options = OutputOptions.of(
+        file_options=FileOptions.of(path=output_file_path, mode=output_write_option),
+        output_type=output_type,
+        json_options=json_options,
+        csv_options={"column_names": TEAM_SEASON_COLUMN_NAMES}
     )
     output_service = OutputService(
         json_writer=JSONWriter(value_formatter=BasketballReferenceJSONEncoder),

@@ -111,6 +111,30 @@ TEAM_BOX_SCORES_COLUMN_NAMES = [
     "outcome",
 ]
 
+TEAM_SEASON_COLUMN_NAMES = [
+    "field goals",
+    "field_goals_attempted",
+    "field_goal_percentage",
+    "three_pointers",
+    "three_pointers_attempted",
+    "three_point_percentage",
+    "two_pointers",
+    "two_pointers_attempted",
+    "two_point_percentage",
+    "free_throws",
+    "free_throws_attempted",
+    "free_throw_percentage",
+    "offensive_rebounds",
+    "defensive_rebounds",
+    "total_rebounds",
+    "assists",
+    "steals",
+    "blocks",
+    "turnovers",
+    "personal_fouls",
+    "points",
+]
+
 PLAY_BY_PLAY_COLUMN_NAMES = [
     "period",
     "period_type",

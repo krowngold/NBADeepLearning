@@ -1,6 +1,7 @@
 # from basketball_reference_web_scraper import client
 # from basketball_reference_web_scraper.data import OutputType
 from subdir.basketball_reference_web_scraper import client
+from subdir.basketball_reference_web_scraper.data import OutputType
 # from basketball_reference_web_scraper import client
 # basketball_reference_web_scraper.client.player_box_scores(
 #     day=1, month=1, year=2017, 
@@ -10,11 +11,11 @@ from subdir.basketball_reference_web_scraper import client
 
 print("hello world!")
 
-# client.player_box_scores(
-#     day=1, month=1, year=2017, 
-#     output_type=OutputType.CSV, 
-#     output_file_path="./1_1_2017_box_scores.csv"
-# )
+print(client.team_season_totals(
+    team="BOS", year=2022,
+    output_type=OutputType.CSV,
+    output_file_path="test.csv"
+))
 
 
 # get box scores for each day as a json

@@ -126,9 +126,12 @@ class CSVWriter(Writer):
 
 
 class SearchCSVWriter(CSVWriter):
-    def rows(self, data):
-        return [
-            dict((key, self.value_formatter(value)) for key, value in row.items())
-            for row in data["players"]
-        ]
+    def rows(self, data, players=True):
+        if players:
+            return [
+                dict((key, self.value_formatter(value)) for key, value in row.items())
+                for row in data["players"]
+            ]
+        else:
+            print(data)
 
